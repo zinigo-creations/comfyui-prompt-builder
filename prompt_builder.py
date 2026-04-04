@@ -69,7 +69,7 @@ class PromptBuilder:
     RETURN_TYPES = ("STRING",)
     RETURN_NAMES = ("prompt",)
     FUNCTION = "build_prompt"
-    CATEGORY = "Prompt"
+    CATEGORY = "Prompt Builder/Core"
 
     def build_prompt(self, base_prompt, always_tags, **kwargs):
         """

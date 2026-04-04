@@ -1,0 +1,14 @@
+[project]
+name = "prompt-builder"
+version = "1.0.0"
+description = "Structured dropdown-based prompt builder for ComfyUI."
+requires-python = ">=3.10"
+license = { text = "MIT" }
+keywords = ["comfyui", "prompt", "prompt-builder", "image-generation"]
+
+[project.urls]
+Repository = "https://github.com/zinigo-creations/comfyui-prompt-builder"
+
+[tool.comfy]
+PublisherId = "zinigo-creations"
+DisplayName = "Prompt Builder"
