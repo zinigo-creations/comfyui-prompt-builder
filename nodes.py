@@ -257,7 +257,13 @@ class CombinePromptNode:
                 'nsfw': ('STRING', {'default': ''}),
                 'style_preset': ('STRING', {'default': ''}),
                 'positive_prompt_text': ('STRING', {'multiline': True, 'default': ''}),
-                'negative_prompt_text': ('STRING', {'multiline': True, 'default': ''}),
+                'negative_prompt_text': (
+                    'STRING',
+                    {
+                        'multiline': True,
+                        'default': 'score_6, score_5, score_4, source_pony, (worst quality:1.2), (low quality:1.2), (normal quality:1.2), lowres, bad anatomy, bad hands, signature, watermarks, ugly, imperfect eyes, skewed eyes, unnatural face, unnatural body, error, extra limb, missing limbs',
+                    },
+                ),
             }
         }
 
