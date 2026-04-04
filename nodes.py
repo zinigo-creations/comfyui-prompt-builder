@@ -185,23 +185,9 @@ class CharacterNode(SectionNodeBase):
     OUTPUT_NAME = 'character'
     RETURN_NAMES = ('character',)
 
-    @classmethod
-    def extra_inputs(cls):
-        return {
-            'weight': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 100.0, 'step': 0.1}),
-        }
-
     def format_output(self, combined, kwargs):
         if not combined:
             return ('',)
-
-        try:
-            weight = float(kwargs.get('weight', 1.0))
-        except Exception:
-            weight = 1.0
-
-        if weight != 1.0:
-            return (f'({combined}:{weight})',)
         return (combined,)
 
 
@@ -215,6 +201,30 @@ class PresetCharacterNode(SectionNodeBase):
     SECTION = 'preset_character'
     OUTPUT_NAME = 'preset_character'
     RETURN_NAMES = ('preset_character',)
+
+    @classmethod
+    def extra_inputs(cls):
+        return {
+            'weight_style': (
+                ['none', 'slight emphasis', 'medium emphasis', 'strong emphasis'],
+                {'default': 'none'},
+            ),
+        }
+
+    def format_output(self, combined, kwargs):
+        if not combined:
+            return ('',)
+
+        weight_style = str(kwargs.get('weight_style', 'none')).strip().lower()
+
+        if weight_style == 'slight emphasis':
+            return (f'({combined})',)
+        if weight_style == 'medium emphasis':
+            return (f'(({combined}))',)
+        if weight_style == 'strong emphasis':
+            return (f'((({combined})))',)
+
+        return (combined,)
 
 
 class StylePresetNode(SectionNodeBase):
